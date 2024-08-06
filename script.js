@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             redirect: "follow"
         };
 
-        fetch("https://seek4toolapi.zeabur.app:3000/api/tools/query", requestOptions)
+        fetch("https://seek4toolapi.zeabur.app/api/tools/query", requestOptions)
             .then((response) => response.json())
             .then((result) => {
                 if(result.error === undefined) {
