@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const raw = JSON.stringify({
             "query": query,
-            "lang": lang ? lang : en
+            "lang": lang ? lang : "en"
         });
 
         const requestOptions = {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             redirect: "follow"
         };
 
-        fetch("https://server.zeabur.internal:3000/api/tools/query", requestOptions)
+        fetch("https://server.zeabur.internal:8080/api/tools/query", requestOptions)
             .then((response) => response.json())
             .then((result) => {
                 if(result.error === undefined) {
