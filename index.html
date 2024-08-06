@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class="scrollbar-thumb-slate-700 scrollbar-track-gray-800">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div id="main" data-state="beforequery" class='group/main flex flex-row items-center w-full min-h-screen bg-gray-950'>
+        <div class="bg-cyan-950 w-40 h-[99vh] rounded-e-md flex flex-col justify-between bg-opacity-70">
+            <!-- 侧边功能区 -->
+            <div>
+
+            </div>
+            <div class="flex flex-col-reverse">
+                <!-- 下侧的功能区 -->
+                <div class="w-full pb-5 flex items-center justify-center">
+                    <!-- 语言选择按钮 -->
+                    <div id="langSelect" class="rounded-full bg-slate-400 shadow-sm p-2 cursor-pointer hover:bg-slate-300 hover:duration-200 active:bg-slate-400 transition duration-500">
+                        <svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#444" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 24h40" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path clip-rule="evenodd" d="M24 44c4.418 0 8-8.954 8-20S28.418 4 24 4s-8 8.954-8 20 3.582 20 8 20z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.858 10.142A19.937 19.937 0 0024 16a19.937 19.937 0 0014.142-5.858M38.142 37.858A19.937 19.937 0 0024 32a19.937 19.937 0 00-14.142 5.858" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col items-center flex-grow scrollbar-thin overflow-y-auto h-[100vh]">
+            <div id="board" class='group/main flex flex-col items-center w-full max-w-[90%] lg:max-w-[58rem]'>
+                <!--主体功能区-->
+                <!--一个div，用于生成搜索框上升的动画，顺便在里面放上logo和标题-->
+                <div class="flex items-center flex-col-reverse group-data-[state=beforequery]/main:h-[50vh] h-0 w-full transition-height duration-700">
+                    <div class="text-gray-500 text-[8vw] lg:text-[3rem] pb-6">Find the Right Tools Instantly</div>
+                </div>
+                <!--搜索框-->
+                <div class="py-4 w-full sticky group-data-[state=whilequery]/main:top-0 bg-gray-950 z-40">
+                    <div class="flex rounded-full bg-gray-900 px-2 p-2 w-full transition-width">
+                        <input id="query" type="text" class="w-full bg-gray-900 flex bg-transparent pl-2 text-slate-50 outline-0"
+                            placeholder="Describe your need, and right tools will come." value="I want to scale images losslessly." />
+                        <button id="queryBtn" type="submit"
+                            class="relative p-2 bg-slate-900 rounded-full hover:bg-slate-800 active:bg-gray-900 transition">
+                            <svg width="1.5rem" height="1.5rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            
+                                <g id="SVGRepo_bgCarrier" stroke-width="0" />
+            
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+            
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                                        stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </g>
+            
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="resultZone" class="w-full">
+                    <div id="waitTip" data-state="none" class="data-[state=wait]:flex hidden items-center justify-center min-h-10">
+
+                        <div class="flex space-x-2 animate-pulse">
+                            <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+                        </div>
+                    
+                    </div>
+                    <!--查询结果展示区-->
+                    <template id="resultTpl">
+                        <a href="https://www.baidu.com/" target="_blank">
+                            <div class="animate-emerge cursor-pointer select-none flex flex-grow-0 flex-row items-center gap-1 bg-gray-900 p-2 rounded-xl w-full my-4 first:mt-0 hover:translate-x-2 transition-transform duration-500">
+                                <img onerror="this.onerror=null; this.src='favicon-32x32.png';" class="p-2 w-12 h-12" />
+                                <div class="flex flex-col h-full w-full">
+                                    <div class="st-title text-white">title</div>
+                                    <div class="st-desc text-gray-500 text-sm">description</div>
+                                </div>
+                            </div>
+                        </a>
+                    </template>
+                    <div id="resultItem">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div id="langZone" style="display: none;" class="fixed left-0 top-0 z-50 w-full h-full bg-gray-500 bg-opacity-50 flex items-center justify-center backdrop-blur-sm">
+        <div class="flex flex-col flex-wrap items-stretch w-[90%] h-60 sm:w-96 bg-slate-600 p-4 rounded-lg shadow-md animate-pop-up">
+            <div class="text-white m-1 p-1 px-8 select-none cursor-pointer border border-slate-500 sm:border-none hover:bg-slate-500 hover:transition-none active:bg-slate-700 rounded-md transition" data-lang="zh">中文</div>
+            <div class="text-white m-1 p-1 px-8 select-none cursor-pointer border border-slate-500 sm:border-none hover:bg-slate-500 hover:transition-none active:bg-slate-700 rounded-md transition" data-lang="en">English</div>
+            <div class="text-white m-1 p-1 px-8 select-none cursor-pointer border border-slate-500 sm:border-none hover:bg-slate-500 hover:transition-none active:bg-slate-700 rounded-md transition" data-lang="ru">Русский</div>
+            <div class="text-white m-1 p-1 px-8 select-none cursor-pointer border border-slate-500 sm:border-none hover:bg-slate-500 hover:transition-none active:bg-slate-700 rounded-md transition" data-lang="de">Deutsch</div>
+            <div class="text-white m-1 p-1 px-8 select-none cursor-pointer border border-slate-500 sm:border-none hover:bg-slate-500 hover:transition-none active:bg-slate-700 rounded-md transition" data-lang="ja">日本語</div>
+            <div class="text-white m-1 p-1 px-8 select-none cursor-pointer border border-slate-500 sm:border-none hover:bg-slate-500 hover:transition-none active:bg-slate-700 rounded-md transition" data-lang="es">Español</div>
+            <div class="text-white m-1 p-1 px-8 select-none cursor-pointer border border-slate-500 sm:border-none hover:bg-slate-500 hover:transition-none active:bg-slate-700 rounded-md transition" data-lang="fr">Français</div>
+            <div class="text-white m-1 p-1 px-8 select-none cursor-pointer border border-slate-500 sm:border-none hover:bg-slate-500 hover:transition-none active:bg-slate-700 rounded-md transition" data-lang="ko">한국어</div>
+            <div class="text-white m-1 p-1 px-8 select-none cursor-pointer border border-slate-500 sm:border-none hover:bg-slate-500 hover:transition-none active:bg-slate-700 rounded-md transition" data-lang="pt-BR">Português</div>
+            <div class="text-white m-1 p-1 px-8 select-none cursor-pointer border border-slate-500 sm:border-none hover:bg-slate-500 hover:transition-none active:bg-slate-700 rounded-md transition" data-lang="zh-TW">繁體中文</div>
+        </div>
+    </div>
+</body>
+
+</html>
