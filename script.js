@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             redirect: "follow"
         };
 
-        fetch("http://localhost:3000/api/tools/query", requestOptions)
+        fetch("http://server.zeabur.internal:8080/api/tools/query", requestOptions)
             .then((response) => response.json())
             .then((result) => {
                 if(result.error === undefined) {
