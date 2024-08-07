@@ -60,6 +60,25 @@ document.addEventListener('DOMContentLoaded', () => {
     $('#langZone').querySelectorAll("div[data-lang]").forEach((e) => {
         e.addEventListener('click', setLang);
     });
+
+    $('#toggleButton').addEventListener('click', () => {
+        if ($('#sidebar').classList.contains('hidden')) {
+            $('#sidebar').classList.remove('hidden');
+            $('#sidebarMask').classList.remove('hidden');
+            $('#toggleButton').classList.add('hidden');
+        } else {
+            $('#sidebar').classList.add('hidden');
+            $('#sidebarMask').classList.add('hidden');
+            $('#toggleButton').style.display = "block";
+            $('#toggleButton').classList.remove('hidden');
+        }
+    });
+
+    $('#sidebarMask').addEventListener('click', () => {
+        $('#sidebar').classList.add('hidden');
+        $('#sidebarMask').classList.add('hidden');
+        $('#toggleButton').classList.remove('hidden');
+    });
 });
 async function sleep(time) {
     return new Promise((r) => setTimeout(r, time));

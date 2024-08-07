@@ -10,30 +10,34 @@
 
 <body>
     <div id="main" data-state="beforequery" class='group/main flex flex-row items-center w-full min-h-screen bg-gray-950'>
-        <div class="bg-cyan-950 w-40 h-[99vh] rounded-e-md flex flex-col justify-between bg-opacity-70">
+        <div id="sidebarMask" class="hidden fixed left-0 top-0 w-full h-full bg-slate-500 bg-opacity-25 backdrop-blur-sm z-30 cursor-pointer sm:hidden"></div>
+        <div id="sidebar" class="bg-slate-900 w-40 h-[99vh] rounded-e-md hidden flex flex-col justify-between [clip-path:border-box] fixed sm:[position:inherit] sm:flex z-40 animate-slide-right sm:animate-none">
             <!-- 侧边功能区 -->
             <div>
-
+                <!-- 其他内容 -->
             </div>
             <div class="flex flex-col-reverse">
                 <!-- 下侧的功能区 -->
-                <div class="w-full pb-5 flex items-center justify-center">
+                <div id="langSelect" class="pl-2 py-2 m-2 box-border rounded-md flex items-center cursor-pointer select-none bg-opacity-20 hover:bg-cyan-900 hover:text-white transition">
                     <!-- 语言选择按钮 -->
-                    <div id="langSelect" class="rounded-full bg-slate-400 shadow-sm p-2 cursor-pointer hover:bg-slate-300 hover:duration-200 active:bg-slate-400 transition duration-500">
-                        <svg width="36" height="36" viewBox="0 0 48 48" fill="none" stroke="#444" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 24h40" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path clip-rule="evenodd" d="M24 44c4.418 0 8-8.954 8-20S28.418 4 24 4s-8 8.954-8 20 3.582 20 8 20z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.858 10.142A19.937 19.937 0 0024 16a19.937 19.937 0 0014.142-5.858M38.142 37.858A19.937 19.937 0 0024 32a19.937 19.937 0 00-14.142 5.858" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
+                    <svg width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="#678" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 24h40" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path clip-rule="evenodd" d="M24 44c4.418 0 8-8.954 8-20S28.418 4 24 4s-8 8.954-8 20 3.582 20 8 20z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.858 10.142A19.937 19.937 0 0024 16a19.937 19.937 0 0014.142-5.858M38.142 37.858A19.937 19.937 0 0024 32a19.937 19.937 0 00-14.142 5.858" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <div class="text-gray-500 font-bold text-lg ml-2">语言</div>
                 </div>
             </div>
         </div>
+        <!-- 侧边功能区切换按钮 -->
+        <button id="toggleButton" class="sm:hidden fixed bottom-4 left-4 z-20 bg-cyan-950 text-white p-2 rounded-md">
+            <svg width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="#FFF" xmlns="http://www.w3.org/2000/svg"><path d="M7.95 11.95h32M7.95 23.95h32M7.95 35.95h32" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
         <div class="flex flex-col items-center flex-grow scrollbar-thin overflow-y-auto h-[100vh]">
-            <div id="board" class='group/main flex flex-col items-center w-full max-w-[90%] lg:max-w-[58rem]'>
+            <div id="board" class='group/main flex flex-col items-center w-full max-w-[90%] xl:max-w-[58rem]'>
                 <!--主体功能区-->
                 <!--一个div，用于生成搜索框上升的动画，顺便在里面放上logo和标题-->
                 <div class="flex items-center flex-col-reverse group-data-[state=beforequery]/main:h-[50vh] h-0 w-full transition-height duration-700">
-                    <div class="text-gray-500 text-[8vw] lg:text-[3rem] pb-6">Find the Right Tools Instantly</div>
+                    <div class="text-gray-500 text-[5vw] lg:text-[3rem] pb-6">Find the Right Tools Instantly</div>
                 </div>
                 <!--搜索框-->
-                <div class="py-4 w-full sticky group-data-[state=whilequery]/main:top-0 bg-gray-950 z-40">
+                <div class="py-4 w-full sticky group-data-[state=whilequery]/main:top-0 bg-gray-950 z-20">
                     <div class="flex rounded-full bg-gray-900 px-2 p-2 w-full transition-width">
                         <input id="query" type="text" class="w-full bg-gray-900 flex bg-transparent pl-2 text-slate-50 outline-0"
                             placeholder="Describe your need, and right tools will come." value="I want to scale images losslessly." />
